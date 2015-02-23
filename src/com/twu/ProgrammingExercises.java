@@ -6,6 +6,8 @@ public class ProgrammingExercises {
     private static final String NEWLINE = "\n";
     private static final String EMPTY_STRING = "";
     private static final String SPACE = " ";
+    private static final String FIZZ = "Fizz";
+    private static final String BUZZ = "Buzz";
 
     private static boolean isNZero(int n) {
         if(n < 0) throw new IllegalArgumentException("n must be 0 or greater");
@@ -65,6 +67,20 @@ public class ProgrammingExercises {
         return isoscelesTriangle(n-1, n) + name + NEWLINE + reverseIsoscelesTriangle(n-1, n);
     }
 
+    public static String fizzBuzz(int n) {
+        return isNZero(n) ? EMPTY_STRING : fizzBuzz(n - 1) + fizzBuzzValue(n);
+    }
+
+    public static String fizzBuzzValue(int n) {
+        final boolean nDivisibleBy3 = nDivisibleByDivisor(n, 3);
+        final boolean nDivisibleBy5 = nDivisibleByDivisor(n, 5);
+        return (nDivisibleBy3 ? (FIZZ + (nDivisibleBy5 ? BUZZ : EMPTY_STRING)) : (nDivisibleBy5 ? BUZZ : (EMPTY_STRING + n))) + NEWLINE;
+    }
+
+    private static boolean nDivisibleByDivisor(int n, int divisor) {
+        return n % divisor == 0;
+    }
+
     public static void main(String[] args) {
         // Easiest exercise ever
         printText(oneAsterisk());
@@ -86,6 +102,9 @@ public class ProgrammingExercises {
 
         // Diamond with name
         printText(diamondWithName(3, "Bill"));
+
+        // Fizz Buzz
+        printText(fizzBuzz(100));
     }
 
 }
