@@ -1,5 +1,8 @@
 package com.twu;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ProgrammingExercises {
 
     private static final String ASTERISK = "*";
@@ -81,6 +84,29 @@ public class ProgrammingExercises {
         return n % divisor == 0;
     }
 
+    private static boolean isPrimeNumber(int n) {
+        if (n <= 1) return false;
+        for (int i = 2; i < n; i++)
+            if (nDivisibleByDivisor(n, i))
+                return false;
+        return true;
+    }
+
+    private static boolean isPrimeFactor(int n, int num) {
+        return isPrimeNumber(n) && nDivisibleByDivisor(num, n);
+    }
+
+    public static List<Integer> generate(int n, int num) {
+        final List<Integer> list = isNZero(n) ? new ArrayList<Integer>() : generate(n - 1, num);
+        if (isPrimeFactor(n, num))
+            list.add(n);
+        return list;
+    }
+
+    public static List<Integer> generate(int n) {
+        return generate(n, n);
+    }
+
     public static void main(String[] args) {
         // Easiest exercise ever
         printText(oneAsterisk());
@@ -105,6 +131,9 @@ public class ProgrammingExercises {
 
         // Fizz Buzz
         printText(fizzBuzz(100));
+
+        // Prime factors
+        System.out.println(generate(30));
     }
 
 }
