@@ -17,8 +17,8 @@ public class ProgrammingExercises {
         return n == 0;
     }
 
-    private static void printText(String text) {
-        System.out.println(text);
+    private static void printObject(Object object) {
+        System.out.println(object.toString());
     }
 
     public static String oneAsterisk() {
@@ -109,31 +109,31 @@ public class ProgrammingExercises {
 
     public static void main(String[] args) {
         // Easiest exercise ever
-        printText(oneAsterisk());
+        printObject(oneAsterisk());
 
         // Draw a horizontal line
-        printText(horizontalLine(3));
+        printObject(horizontalLine(3));
 
         // Draw a vertical line
-        printText(verticalLine(3));
+        printObject(verticalLine(3));
 
         // Draw a right triangle
-        printText(rightTriangle(3));
+        printObject(rightTriangle(3));
 
         // Isosceles Triangle
-        printText(isoscelesTriangle(3));
+        printObject(isoscelesTriangle(3));
 
         // Diamond
-        printText(diamond(3));
+        printObject(diamond(3));
 
         // Diamond with name
-        printText(diamondWithName(3, "Bill"));
+        printObject(diamondWithName(3, "Bill"));
 
         // Fizz Buzz
-        printText(fizzBuzz(100));
+        printObject(fizzBuzz(100));
 
         // Prime factors
-        System.out.println(generate(30));
+        printObject(generate(30));
     }
 
 }
