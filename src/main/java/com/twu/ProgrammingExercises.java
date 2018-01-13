@@ -1,7 +1,9 @@
 package com.twu;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import static java.util.stream.Collectors.toList;
+import static java.util.stream.IntStream.rangeClosed;
 
 public class ProgrammingExercises {
 
@@ -70,37 +72,29 @@ public class ProgrammingExercises {
         return isNZero(n) ? EMPTY_STRING : fizzBuzz(n - 1) + fizzBuzzValue(n);
     }
 
-    public static String fizzBuzzValue(int n) {
+    private static String fizzBuzzValue(int n) {
         final boolean nDivisibleBy3 = nDivisibleByDivisor(n, 3);
         final boolean nDivisibleBy5 = nDivisibleByDivisor(n, 5);
         return (nDivisibleBy3 ? (FIZZ + (nDivisibleBy5 ? BUZZ : EMPTY_STRING)) : (nDivisibleBy5 ? BUZZ : (EMPTY_STRING + n))) + NEWLINE;
     }
 
-    private static boolean nDivisibleByDivisor(int n, int divisor) {
-        return n % divisor == 0;
-    }
-
-    private static boolean isPrimeNumber(int n) {
-        if (n <= 1) return false;
-        for (int i = 2; i < n; i++)
-            if (nDivisibleByDivisor(n, i))
-                return false;
-        return true;
+    public static List<Integer> primeFactorsOf(int n) {
+        return rangeClosed( 1, n )
+                .boxed()
+                .filter( a -> isPrimeFactor( a, n ) )
+                .collect( toList() );
     }
 
     private static boolean isPrimeFactor(int n, int num) {
         return isPrimeNumber(n) && nDivisibleByDivisor(num, n);
     }
 
-    public static List<Integer> generate(int n, int num) {
-        final List<Integer> list = isNZero(n) ? new ArrayList<>() : generate(n - 1, num);
-        if (isPrimeFactor(n, num))
-            list.add(n);
-        return list;
+    public static boolean isPrimeNumber(int n) {
+        return n > 1 && rangeClosed( 2, n/2 ).noneMatch( a -> nDivisibleByDivisor( n, a ) );
     }
 
-    public static List<Integer> generate(int n) {
-        return generate(n, n);
+    private static boolean nDivisibleByDivisor(int n, int divisor) {
+        return n % divisor == 0;
     }
 
     public static void main(String[] args) {
@@ -129,7 +123,7 @@ public class ProgrammingExercises {
         System.out.println(fizzBuzz(100));
 
         // Prime factors
-        System.out.println(generate(30));
+        System.out.println( primeFactorsOf(30));
     }
 
 }
