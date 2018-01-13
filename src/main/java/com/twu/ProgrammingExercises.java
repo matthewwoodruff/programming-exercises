@@ -17,10 +17,6 @@ public class ProgrammingExercises {
         return n == 0;
     }
 
-    private static void printObject(Object object) {
-        System.out.println(object.toString());
-    }
-
     public static String oneAsterisk() {
         return horizontalLine(1);
     }
@@ -97,7 +93,7 @@ public class ProgrammingExercises {
     }
 
     public static List<Integer> generate(int n, int num) {
-        final List<Integer> list = isNZero(n) ? new ArrayList<Integer>() : generate(n - 1, num);
+        final List<Integer> list = isNZero(n) ? new ArrayList<>() : generate(n - 1, num);
         if (isPrimeFactor(n, num))
             list.add(n);
         return list;
@@ -109,31 +105,31 @@ public class ProgrammingExercises {
 
     public static void main(String[] args) {
         // Easiest exercise ever
-        printObject(oneAsterisk());
+        System.out.println(oneAsterisk());
 
         // Draw a horizontal line
-        printObject(horizontalLine(3));
+        System.out.println(horizontalLine(3));
 
         // Draw a vertical line
-        printObject(verticalLine(3));
+        System.out.println(verticalLine(3));
 
         // Draw a right triangle
-        printObject(rightTriangle(3));
+        System.out.println(rightTriangle(3));
 
         // Isosceles Triangle
-        printObject(isoscelesTriangle(3));
+        System.out.println(isoscelesTriangle(3));
 
         // Diamond
-        printObject(diamond(3));
+        System.out.println(diamond(3));
 
         // Diamond with name
-        printObject(diamondWithName(3, "Bill"));
+        System.out.println(diamondWithName(3, "Bill"));
 
         // Fizz Buzz
-        printObject(fizzBuzz(100));
+        System.out.println(fizzBuzz(100));
 
         // Prime factors
-        printObject(generate(30));
+        System.out.println(generate(30));
     }
 
 }
