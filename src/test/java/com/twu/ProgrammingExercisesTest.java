@@ -7,7 +7,7 @@ import java.util.List;
 import static com.twu.ProgrammingExercises.diamond;
 import static com.twu.ProgrammingExercises.diamondWithName;
 import static com.twu.ProgrammingExercises.fizzBuzz;
-import static com.twu.ProgrammingExercises.horizontalLine;
+import static com.twu.ProgrammingExercises.asteriskLine;
 import static com.twu.ProgrammingExercises.isoscelesTriangle;
 import static com.twu.ProgrammingExercises.oneAsterisk;
 import static com.twu.ProgrammingExercises.primeFactorsOf;
@@ -28,8 +28,8 @@ public class ProgrammingExercisesTest {
 
     @Test
     public void shouldGenerateAHorizontalLineWithANumberOfAsterisks() {
-        assertThat( horizontalLine( 3 ), is( "***\n" ) );
-        assertThat( horizontalLine( 5 ), is( "*****\n" ) );
+        assertThat( asteriskLine( 3 ), is( "***\n" ) );
+        assertThat( asteriskLine( 5 ), is( "*****\n" ) );
     }
 
     @Test
@@ -53,7 +53,7 @@ public class ProgrammingExercisesTest {
                 " *** \n" +
                 "*****\n";
 
-        assertThat( isoscelesTriangle( 3 ), is( expected ) );
+        assertThat( isoscelesTriangle(0, 3 ), is( expected ) );
     }
 
     @Test
